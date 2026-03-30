@@ -1,0 +1,38 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/gh/anthropics/claude-code@latest/.claude-plugin/plugin.schema.json",
+  "name": "infostyle",
+  "version": "1.0.0",
+  "description": "Edit Russian text using Ilyakhov's information style. Removes stop-words, cliches, bureaucratic language. Replaces with concrete facts and numbers. Adapts to context: UI, landing pages, emails, articles.",
+  "author": "artgas1",
+  "license": "MIT",
+  "homepage": "https://github.com/artgas1/infostyle-skill",
+  "repository": "https://github.com/artgas1/infostyle-skill",
+  "keywords": [
+    "infostyle",
+    "russian",
+    "copywriting",
+    "editing",
+    "text-quality",
+    "ilyakhov",
+    "glavred",
+    "ux-writing",
+    "microcopy"
+  ],
+  "skills": [
+    {
+      "name": "infostyle",
+      "path": "SKILL.md",
+      "description": "Edit and improve Russian text for clarity, specificity, and persuasion using Ilyakhov's information style methodology. Use when the user asks to edit, rewrite, improve, or review Russian text."
+    }
+  ],
+  "agents": {
+    "supported": [
+      "claude-code",
+      "codex",
+      "cursor",
+      "gemini-cli",
+      "windsurf",
+      "opencode"
+    ]
+  }
+}
