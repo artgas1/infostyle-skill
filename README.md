@@ -1,106 +1,152 @@
 # /infostyle — Claude Code Skill
 
-Edit Russian text using Maxim Ilyakhov's information style methodology.
+Редактор русского текста по методологии Максима Ильяхова (инфостиль).
 
-Based on principles from "Пиши, сокращай" (Write and Cut), Glavred service (glvrd.ru), and 12+ years of Russian editorial practice.
+На основе «Пиши, сокращай», сервиса [Главред](https://glvrd.ru) и 12+ лет редакторской практики.
 
-## What it does
+**[English version below](#english)**
 
-- Removes stop-words, clichés, bureaucratic language, and vague claims
-- Replaces them with concrete facts, numbers, and useful information
-- Adapts to context: UI buttons, forms, error messages, landing pages, emails, articles
-- Scores text on 4 dimensions: clarity, specificity, persuasion, voice
-- Shows before/after with explanations for each change
-- Three editing modes: Light, Standard, Deep
+---
 
-## Install
+## Что делает
+
+- Убирает стоп-слова, штампы, канцеляризмы и голословные утверждения
+- Заменяет конкретикой: фактами, цифрами, полезной информацией
+- Адаптируется к контексту: кнопки, формы, ошибки, лендинги, email, статьи
+- Оценивает текст по 4 измерениям: ясность, конкретика, убедительность, голос
+- Показывает до/после с объяснением каждого изменения
+- Три режима: лёгкая правка, стандартная редактура, глубокая переработка
+
+## Установка
 
 ### Claude Code (CLI / Desktop / Web)
 
 ```bash
-# Option 1: Install from GitHub
-claude skill install <your-username>/infostyle-skill
+# Вариант 1: из GitHub
+claude skill install artgas1/infostyle-skill
 
-# Option 2: Copy manually
+# Вариант 2: скопировать вручную
 cp -r infostyle-skill/ ~/.claude/skills/infostyle/
 
-# Option 3: Add to project
+# Вариант 3: добавить в проект
 cp -r infostyle-skill/ .claude/skills/infostyle/
 ```
 
-### Other agents (Cursor, Codex, Windsurf)
+### Другие агенты (Cursor, Codex, Windsurf, Gemini CLI)
 
-Copy `SKILL.md` to your agent's skill/prompt directory. The skill follows the open Agent Skills spec.
+Скопируйте `SKILL.md` в директорию скиллов вашего агента. Скилл следует открытому стандарту Agent Skills.
 
-## Usage
+## Использование
 
 ```
 /infostyle Презентация за 5 минут — загрузите тему и получите готовые слайды
 
-/infostyle [paste your text]
+/infostyle [вставьте текст]
 
-/infostyle path/to/file.md
+/infostyle путь/к/файлу.md
 ```
 
-The skill will:
-1. Ask about context (text type, audience, placement, goal) if not obvious
-2. Score the original text
-3. Edit using two-stage process: clean → fill with facts
-4. Show before/after with scores and explanations
-5. Offer alternatives for key elements
+Скилл:
+1. Спросит контекст (тип текста, аудитория, размещение, цель) — если не очевидно
+2. Оценит исходный текст
+3. Отредактирует в два этапа: вычистить → наполнить фактами
+4. Покажет до/после с оценками и объяснениями
+5. Предложит альтернативы для ключевых элементов
 
-## Editing modes
+## Режимы
 
-| Mode | When to use | What changes |
-|------|-------------|-------------|
-| **Light** | Text is mostly good, minor cleanup | Fix obvious issues, keep author's voice |
-| **Standard** | Default for most tasks | Remove stop-words, add specificity, fix structure |
-| **Deep** | Text doesn't work, needs rewrite | Full restructuring, may look very different |
+| Режим | Когда использовать | Что меняется |
+|-------|-------------------|-------------|
+| **Лёгкая правка** | Текст в целом хорош, мелкая чистка | Убрать очевидное, сохранить голос автора |
+| **Стандартная редактура** | По умолчанию | Убрать стоп-слова, усилить конкретику, исправить структуру |
+| **Глубокая переработка** | Текст не работает | Полная перестройка, текст может измениться значительно |
 
-## What's inside
+## Что внутри
 
 ```
-SKILL.md                          # Main skill — workflow, rules, when to invoke
+SKILL.md                          # Главный файл — порядок работы, правила
 references/
-  stop-words.md                   # 15 categories of stop-words with transformation examples
-  text-types.md                   # Rules by text type: UI, landing, email, article, support
-  scoring.md                      # 4-dimension scoring criteria + self-check checklist
-  manipulation-patterns.md        # 12 manipulation anti-patterns to always remove
-  examples.md                     # Before/after examples for every text type
+  stop-words.md                   # 15 категорий стоп-слов с примерами трансформаций
+  text-types.md                   # Правила по типам: UI, лендинг, email, статья, саппорт
+  scoring.md                      # 4 измерения оценки + чеклист самопроверки
+  manipulation-patterns.md        # 12 антипаттернов манипуляции
+  examples.md                     # Примеры до/после по каждому типу текста
 ```
 
-## Methodology
+## Методология
 
-The skill implements Ilyakhov's two-stage editing process:
+Двухэтапный процесс редактуры по Ильяхову:
 
-1. **Clean** (Вычистить) — Remove all stop-words, clichés, bureaucratic language, intensifiers, vague references, nominalizations, excessive pronouns, passive voice, modal verbs
-2. **Fill** (Наполнить) — Replace deleted material with concrete facts, data, examples. Never leave gaps.
+1. **Вычистить** — убрать стоп-слова, штампы, канцеляризмы, усилители, размытые формулировки, отглагольные существительные, пассивный залог, модальные глаголы
+2. **Наполнить** — заменить удалённое фактами, данными, примерами. Никогда не оставлять пустоту.
 
-Key principle from Ilyakhov himself:
+> «Не выключайте голову.» — Ильяхов
+>
+> Инфостиль — это навигация, а не автозамена. Каждое правило требует осмысления в контексте.
 
-> "Не выключайте голову." (Don't turn off your brain.)
-> Infostyle is navigation, not autocorrect. Every rule requires judgment in context.
+## Адаптация к контексту
 
-## Context awareness
+Строгость зависит от типа текста:
 
-The skill adapts strictness based on text type:
+- **UI кнопки/лейблы** — расслабленная. Краткость важнее всего. 1-3 слова.
+- **Формы и ошибки** — средняя. Что случилось + как исправить.
+- **Лендинги** — средняя. Конкретные выгоды, эмоции допустимы.
+- **Email** — средняя-строгая. Один топик, ясный призыв к действию.
+- **Статьи** — строгая. Полный инфостиль.
+- **Юридический текст** — не применять. Точность важнее краткости.
 
-- **UI buttons/labels** — Relaxed. Brevity over everything. 1-3 words max.
-- **Forms and errors** — Medium. What happened + how to fix.
-- **Landing pages** — Medium. Concrete benefits, emotional hooks allowed.
-- **Email** — Medium-strict. One topic, clear CTA.
-- **Articles** — Strict. Full infostyle.
-- **Legal text** — Don't apply. Precision over brevity.
+## Пример
 
-## Sources
+**До:**
+```
+Уникальный AI-сервис нового поколения
+Наша инновационная платформа использует передовые технологии
+искусственного интеллекта для создания качественных презентаций
+[Попробовать бесплатно]
+```
 
-- Ильяхов М., Сарычева Л. "Пиши, сокращай" (2016, updated 2025)
-- Ильяхов М. "Ясно, понятно" (2020)
-- Ильяхов М., Сарычева Л. "Новые правила деловой переписки" (2018)
-- [Glavred service](https://glvrd.ru) and [reference](https://soviet.glvrd.ru)
-- [Bureau.ru electronic textbook](https://bureau.ru/projects/book-text/)
-- [22 principles of infostyle](https://habr.com/ru/post/323232/)
-- [Editor's checklist](http://maximilyahov.ru/blog/all/the-checklist/)
+**После:**
+```
+Презентация за 5 минут
+Загрузите тему — получите готовые слайды с текстом и оформлением.
+15 000 студентов уже сдали работы.
+[Создать презентацию бесплатно]
+```
+
+## Источники
+
+- Ильяхов М., Сарычева Л. «Пиши, сокращай» (2016, обновлено 2025)
+- Ильяхов М. «Ясно, понятно» (2020)
+- Ильяхов М., Сарычева Л. «Новые правила деловой переписки» (2018)
+- [Сервис Главред](https://glvrd.ru) и [справочник](https://soviet.glvrd.ru)
+- [Электронный учебник Бюро](https://bureau.ru/projects/book-text/)
+- [22 заповеди инфостиля](https://habr.com/ru/post/323232/)
+- [Чеклист редактора](http://maximilyahov.ru/blog/all/the-checklist/)
+
+---
+
+<a name="english"></a>
+
+## English
+
+Claude Code skill for editing Russian text using Maxim Ilyakhov's information style methodology.
+
+Based on "Пиши, сокращай" (Write and Cut), [Glavred](https://glvrd.ru) service, and 12+ years of Russian editorial practice.
+
+**What it does:**
+- Removes stop-words, cliches, bureaucratic language, and vague claims
+- Replaces with concrete facts, numbers, and useful information
+- Adapts to context: UI buttons, forms, errors, landing pages, emails, articles
+- Scores text on 4 dimensions: clarity, specificity, persuasion, voice
+- Shows before/after with explanations
+- Three modes: light edit, standard, deep rewrite
+
+**Install:**
+```bash
+claude skill install artgas1/infostyle-skill
+```
+
+**Cross-agent compatible:** Claude Code, Codex, Cursor, Gemini CLI, Windsurf.
 
 ## License
 
